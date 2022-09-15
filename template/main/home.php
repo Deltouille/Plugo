@@ -1,0 +1,1 @@
+<h1>Plugo, un micro framework php</h1>
