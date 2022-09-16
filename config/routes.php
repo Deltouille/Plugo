@@ -16,6 +16,26 @@ const ROUTES = [
     'test' => [
         'controller' => App\Controller\OfferController::class,
         'method' => 'test'
+    ],
+    'add_rdv' => [
+        'controller' => App\Controller\RDVController::class,
+        'method' => 'addRdv'
+    ],
+    'all_rdv' => [
+        'controller' => App\Controller\RDVController::class,
+        'method' => 'accueil'
+    ],
+    'remove_rdv' => [
+        'controller' => App\Controller\RDVController::class,
+        'method' => 'remove'
+    ],
+    'details' => [
+        'controller' => App\Controller\RDVController::class,
+        'method' => 'details'
+    ],
+    'update_rdv' => [
+        'controller' => App\Controller\RDVController::class,
+        'method' => 'update'
     ]
 
 ];

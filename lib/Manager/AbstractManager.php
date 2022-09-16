@@ -73,10 +73,10 @@ abstract class AbstractManager {
             if($field != array_key_last($fields)){
                 $query .= ', ';
             }
-            $query .= ' WHERE id = :id';
-            $fields['id'] = $id;
-            return $this->executeQuery($query, $fields);
         }
+        $query .= ' WHERE id = :id';
+        $fields['id'] = $id;
+        return $this->executeQuery($query, $fields);
     }
 
     protected function delete(string $class, int $id) {
