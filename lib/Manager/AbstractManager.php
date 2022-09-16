@@ -13,6 +13,7 @@ abstract class AbstractManager {
             . ";dbname=" . DB_INFOS['dbname'],DB_INFOS['username'],DB_INFOS['password']
         );
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $db->exec('SET NAMES utf8');
         return $db;
     }
 
@@ -39,7 +40,7 @@ abstract class AbstractManager {
     }
 
     protected function readMany(string $class) {
-        $query = "SELECT * FROM " $this->classToTable($class);
+        $query = "SELECT * FROM " . $this->classToTable($class);
         if($stmt = $this->executeQuery($query)){
             $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
             return $stmt->fetchAll();

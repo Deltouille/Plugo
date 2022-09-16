@@ -12,6 +12,10 @@ const ROUTES = [
     'mentionLegal' => [
         'controller' => App\Controller\MainController::class,
         'method' => 'mentionLegal'
+    ],
+    'test' => [
+        'controller' => App\Controller\OfferController::class,
+        'method' => 'test'
     ]
 
 ];

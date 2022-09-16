@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 namespace App\Manager;
 
+use App\Entity\Offer;
 use Plugo\Manager\AbstractManager;
-use App\Entity\Article;
 
-class ArticleManager extends AbstractManager {
-    
+class OfferManager extends AbstractManager {
+
     public function find(int $id) {
         return $this->readOne(Offer::class, $id);
     }
@@ -23,7 +23,7 @@ class ArticleManager extends AbstractManager {
         ]);
     }
 
-    public function update(Offer $offer) {
+    public function edit(Offer $offer) {
         return $this->update(Offer::class, [
             'title' => $offer->getTitle(),
             'description' => $offer->getDescription(),
