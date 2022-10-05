@@ -7,7 +7,7 @@ class RDV {
     private ?string $title;
     private ?string $details;
     private $date;
-    private ?bool $important;
+    private ?int $important;
 
     public function getId(){
         return $this->id;
@@ -45,7 +45,7 @@ class RDV {
         return $this->important;
     }
 
-    public function setImportant(?bool $important){
+    public function setImportant(?int $important){
         $this->important = $important; 
     }
 

@@ -7,7 +7,7 @@
     <?php if (isset($data['description'])) { ?>
       <meta name="description" content="<?= $data['description'] ?>">
     <?php } ?>
-    <!--<link rel="stylesheet" href="css/app.css">-->
+    <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
   </head>
   <body>

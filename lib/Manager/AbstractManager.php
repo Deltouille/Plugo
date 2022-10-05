@@ -32,19 +32,54 @@ abstract class AbstractManager {
         return strtolower(end($tmp));
     }
 
-    protected function readOne(string $class, int $id) {
-        $query = "SELECT * FROM " . $this->classToTable($class) . " WHERE id = :id";
-        $stmt = $this->executeQuery($query, ['id' => $id]);
+    protected function readOne(string $class, array $clause) {
+        $query = "SELECT * FROM " . $this->classToTable($class);
+        $arrayVal = [];
+        if($clause != null){
+            $query = $query . " WHERE ";
+            foreach($clause as $key => $val){
+                if($key != array_key_last($clause)){
+                    $query = $query . $key . " = :" . $key . " AND ";
+                }else{
+                    $query = $query . $key . " = :" . $key;
+                }
+
+                $arrayVal[$key] = $val;
+            }
+        }
+        $stmt = $this->executeQuery($query, $arrayVal);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
         return $stmt->fetch();
     }
 
-    protected function readMany(string $class) {
+    protected function readMany(string $class, array $clause = null, array $orderBy = null) {
         $query = "SELECT * FROM " . $this->classToTable($class);
-        if($stmt = $this->executeQuery($query)){
+        $arrayVal = [];
+        if($clause != null){
+            $query = $query . " WHERE ";
+            foreach($clause as $key => $val){
+                if($key != array_key_last($clause)){
+                    $query = $query . $key . " = :" . $key . " AND ";
+                }else{
+                    $query = $query . $key . " = :" . $key;
+                }
+
+                $arrayVal[$key] = $val;
+            }
+        }
+
+        if($orderBy != null){
+            $query = $query . " ORDER BY " . key($orderBy) . " :valueOrder";
+            $valueOrder = $orderBy[key($orderBy)];
+
+            $arrayVal['valueOrder'] = $valueOrder;
+        }
+
+        if($stmt = $this->executeQuery($query, $arrayVal)){
             $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
             return $stmt->fetchAll();
         }
+        
     }
 
     protected function create(string $class, array $fields) {

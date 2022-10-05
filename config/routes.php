@@ -36,6 +36,10 @@ const ROUTES = [
     'update_rdv' => [
         'controller' => App\Controller\RDVController::class,
         'method' => 'update'
+    ],
+    'user_register' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'register'
     ]
 
 ];

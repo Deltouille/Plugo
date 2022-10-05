@@ -1,4 +1,4 @@
-<div class="containe">
+<div class="container">
     <article>
         <header><?= $data['details']->getTitle() ?></header>
         <?= $data['details']->getDetails() ?>

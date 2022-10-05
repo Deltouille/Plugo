@@ -7,12 +7,20 @@ use Plugo\Manager\AbstractManager;
 
 class RDVManager extends AbstractManager {
 
-    public function find(int $id) {
-        return $this->readOne(RDV::class, $id);
+    public function find(array $clause) {
+        return $this->readOne(RDV::class, $clause);
     }
 
     public function findAll() {
         return $this->readMany(RDV::class);
+    }
+
+    public function findBy(array $clause = null, array $orderBy = null){
+        return $this->readMany(RDV::class, $clause, $orderBy);
+    }
+
+    public function findOneBy(array $clause){
+        return $this->readOne(RDV::class, $clause);
     }
 
     public function add(RDV $rdv) {

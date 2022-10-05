@@ -11,7 +11,7 @@ class RDVController extends AbstractController {
     public function accueil() {
         $em = new RDVManager();
         $allRDV = $em->findAll();
-
+        //$allRDV = $em->findBy(null, ['id' => 'DESC']);
         return $this->renderView('rdv/index.php', ['allRDV' => $allRDV]);
     }
 
@@ -23,7 +23,7 @@ class RDVController extends AbstractController {
             $new->setTitle($_POST['title']);
             $new->setDetails($_POST['details']);
             $new->setDate(str_replace("T", " ", $_POST['date']));
-            $new->setImportant(isset($_POST['important']) ? true : '0');
+            $new->setImportant(isset($_POST['important']) ? 1 : 0);
 
             $em->add($new);
             return $this->redirectToRoute('all_rdv');
@@ -34,7 +34,7 @@ class RDVController extends AbstractController {
 
     public function remove() {
         $em = new RDVManager();
-        $dataToRemove = $em->find($_GET['id']);
+        $dataToRemove = $em->find(['id' => $_GET['id']]);
         $em->remove($dataToRemove);
 
         return $this->redirectToRoute('all_rdv');
@@ -42,14 +42,14 @@ class RDVController extends AbstractController {
 
     public function details() {
         $em = new RDVManager();
-        $details = $em->find($_GET['id']);
+        $details = $em->find(['id' => $_GET['id']]);
         return $this->renderView('rdv/details.php', ['details' => $details]);
     }
 
     public function update() {
         $em = new RDVManager();
         if(isset($_POST) && !empty($_POST)){
-            $toUpdate = $em->find($_POST['id']);
+            $toUpdate = $em->find(['id' => $_POST['id']]);
 
             $toUpdate->setTitle($_POST['title']);
             $toUpdate->setDetails($_POST['details']);
@@ -60,7 +60,7 @@ class RDVController extends AbstractController {
 
             return $this->redirectToRoute('all_rdv');
         }
-        $rdv = $em->find($_GET['id']);
+        $rdv = $em->find(['id' => $_GET['id']]);
         return $this->renderView('rdv/update.php', ['rdv' => $rdv, 'ID' => $_GET['id']]);
     }
 

@@ -7,8 +7,8 @@ use Plugo\Manager\AbstractManager;
 
 class OfferManager extends AbstractManager {
 
-    public function find(int $id) {
-        return $this->readOne(Offer::class, $id);
+    public function find(array $clause) {
+        return $this->readOne(Offer::class, $clause);
     }
 
     public function findAll() {
