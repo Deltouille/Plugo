@@ -1,6 +1,8 @@
 <div class="container">
-    <?php if(!empty($data['message'])) { ?>
-        <div class="alert"><?=$data['message']?></div>
+    <?php if(!empty($_SESSION['FLASH'])) { ?>
+        <?php foreach($_SESSION['FLASH'] as $flashMessage) { ?>
+            <div class="alert-<?= $flashMessage['type'] ?>"><?= $flashMessage['message'] ?></div>
+        <?php } ?>
     <?php } ?>
     <form action="" method="post">
         

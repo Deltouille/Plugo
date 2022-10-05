@@ -11,7 +11,6 @@ class RDVController extends AbstractController {
     public function accueil() {
         $em = new RDVManager();
         $allRDV = $em->findAll();
-        //$allRDV = $em->findBy(null, ['id' => 'DESC']);
         return $this->renderView('rdv/index.php', ['allRDV' => $allRDV]);
     }
 
