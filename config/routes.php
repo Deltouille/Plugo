@@ -40,6 +40,14 @@ const ROUTES = [
     'user_register' => [
         'controller' => App\Controller\UserController::class,
         'method' => 'register'
+    ],
+    'user_login' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'login'
+    ],
+    'user_profile' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'userProfile'
     ]
 
 ];

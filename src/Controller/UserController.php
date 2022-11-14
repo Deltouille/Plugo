@@ -52,4 +52,28 @@ class UserController extends AbstractController {
       return $this->renderView('user/register.php');
     }
 
+    public function login() {
+       $em = new UserManager();
+       $flashMessage = new FlashMessage();
+
+       if(isset($_POST) && !empty($_POST)){
+           $user = $em->findOneBy(['email' => $_POST['email']]);
+           if(password_verify($_POST['password'], $user->getPassword())){
+               session_start();
+               $_SESSION['email'] = $user->getEmail();
+               $_SESSION['created_at'] = $user->getCreatedAt();
+
+               return $this->redirectToRoute('user_profile');
+           }else{
+               $flashMessage->generateFlashMessage('AuthenticationErrorLogin', 'Error', 'Erreur lors de la connexion. L\'adresse email ou le mot de passe ne correrspondent pas');
+           }
+
+       }
+       return $this->renderView('user/login.php');
+    }
+
+    public function userProfile() {
+       return $this->renderView('user/profile.php');
+    }
+
 }
