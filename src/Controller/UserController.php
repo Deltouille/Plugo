@@ -76,4 +76,10 @@ class UserController extends AbstractController {
        return $this->renderView('user/profile.php');
     }
 
+    public function userLogout() {
+       session_destroy();
+
+       return $this->redirectToRoute('home', ['state' => 'success']);
+    }
+
 }

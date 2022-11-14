@@ -23,8 +23,16 @@
                 <li><a href="index.php?page=add_rdv">Ajouter un rendez-vous</a></li>
                 <li><a href="index.php?page=all_rdv">Tout les rendez vous</a></li>
                 <li><a href="index.php?page=user_register">S'enregistrer</a></li>
-                <li><a href="">Se connecter</a></li>
+                <li><a href="index.php?page=user_login">Se connecter</a></li>
+                <? if(isset($_SESSION)){ ?>
+                    <li><a href="index.php?page=user_logout">Deconnexion</a></li>
+                <? } ?>
             </ul>
         </div>
+        <? if(isset($_SESSION)){ ?>
+            <div class="navbar-end">
+                <a class="btn">Mon Profil</a>
+            </div>
+        <? } ?>
     </nav>
 </header>
