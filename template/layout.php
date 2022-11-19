@@ -14,7 +14,7 @@
   </head>
   <body>
     <?php include '_navbar.php' ?>
-    <main class="container">
+    <main class="container mx-auto">
       <?php require $templatePath ?>
     </main>
     <?php include '_footer.php' ?>

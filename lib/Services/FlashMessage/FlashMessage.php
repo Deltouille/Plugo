@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace Plugo\Services\FlashMessage;
 
 class FlashMessage {
 

@@ -39,15 +39,19 @@ const ROUTES = [
     ],
     'user_register' => [
         'controller' => App\Controller\UserController::class,
-        'method' => 'register'
+        'method' => 'userRegister'
     ],
     'user_login' => [
         'controller' => App\Controller\UserController::class,
-        'method' => 'login'
+        'method' => 'userLogin'
     ],
     'user_profile' => [
         'controller' => App\Controller\UserController::class,
         'method' => 'userProfile'
+    ],
+    'user_logout' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'userLogout'
     ]
 
 ];

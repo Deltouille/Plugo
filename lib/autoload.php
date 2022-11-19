@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 const ALIASES = [
     'Plugo' => 'lib',
     'App' => 'src',

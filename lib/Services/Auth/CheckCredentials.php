@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Service;
+namespace Plugo\Services\Auth;
 
-use App\Service\FlashMessage;
+use Plugo\Services\FlashMessage\FlashMessage;
 
 class CheckCredentials {
 
