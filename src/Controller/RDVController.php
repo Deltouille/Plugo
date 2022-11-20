@@ -5,6 +5,7 @@ namespace App\Controller;
 use Plugo\Controller\AbstractController;
 use App\Entity\RDV;
 use App\Manager\RDVManager;
+use Plugo\Services\ImageUploader\ImageUploader;
 
 class RDVController extends AbstractController {
 
@@ -18,7 +19,9 @@ class RDVController extends AbstractController {
         if(isset($_POST) && !empty($_POST)){
             $em = new RDVManager();
             $new = new RDV();
-            
+            $image = new ImageUploader();
+            $result = $image->uploadPicture($_FILES);
+            var_dump($result);
             $new->setTitle($_POST['title']);
             $new->setDetails($_POST['details']);
             $new->setDate(str_replace("T", " ", $_POST['date']));

@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/index.php?page=add_rdv" method="POST">
+    <form action="/index.php?page=add_rdv" method="POST" enctype="multipart/form-data">
         <input type="text" value="<?= $_GET['ID'] ?>" name="id" id="id" hidden>
         <!-- Grid -->
         <div class="grid">
@@ -25,6 +25,10 @@
                 important
                 <input type="checkbox" id="important" name="important" placeholder="important">
             </label>
+        </div>
+
+        <div class="grid">
+            <input type="file" name="file">
         </div>
         
         <!-- Button -->
